@@ -1,3 +1,6 @@
+""" 
+Multiple Solutions
+"""
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         minprice = max(prices)
@@ -8,6 +11,33 @@ class Solution:
             elif (prices[i] - minprice > maxprofit):
                 maxprofit = prices[i] - minprice;
         return maxprofit
+    
+class Solution:
+    def maxProfit(self,prices):
+        lowest_day = prices[0]
+        max_diff = 0
+        for price in prices:
+            if price < lowest_day:
+                lowest_day = price
+            diff = price - lowest_day
+            if diff > max_diff:
+                max_diff = diff
+                    
+        return max_diff
+    
+ class Solution:
+    def maxProfit(self,prices):
+        left = 0 #Buy
+        right = 1 #Sell
+        max_profit = 0
+        while right < len(prices):
+            currentProfit = prices[right] - prices[left] #our current Profit
+            if prices[left] < prices[right]:
+                max_profit =max(currentProfit,max_profit)
+            else:
+                left = right
+            right += 1
+        return max_profit
       
 """
 Input: prices = [7,1,5,3,6,4]
